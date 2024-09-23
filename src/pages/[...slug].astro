@@ -1,0 +1,22 @@
+---
+import { useStoryblok } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { slug = "home" } = Astro.params;
+
+const story = await useStoryblok(
+  // The slug to fetch
+  `cdn/stories/${slug}`,
+  // `cdn/stories/home`,
+  // The API options
+  {
+    version: "published",
+  },
+  // The Bridge options (optional, if an empty object, null, or false are set, the API options will be considered automatically as far as applicable)
+  {},
+  // The Astro object (essential for the live preview functionality)
+  Astro
+);
+---
+
+<StoryblokComponent blok={story.content} />
