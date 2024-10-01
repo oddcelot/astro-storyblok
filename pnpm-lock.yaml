@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@storyblok/astro':
+    hash: smke3nl3tcb64xquz2tdxeghxu
+    path: patches/@storyblok__astro.patch
+
 importers:
 
   .:
@@ -17,7 +22,7 @@ importers:
         version: 5.1.1(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))(tailwindcss@3.4.13)
       '@storyblok/astro':
         specifier: 5.1.0-alpha.4
-        version: 5.1.0-alpha.4(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))
+        version: 5.1.0-alpha.4(patch_hash=smke3nl3tcb64xquz2tdxeghxu)(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))
       '@storyblok/js':
         specifier: 3.1.4
         version: 3.1.4
@@ -2335,7 +2340,7 @@ snapshots:
 
   '@shikijs/vscode-textmate@9.2.2': {}
 
-  '@storyblok/astro@5.1.0-alpha.4(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))':
+  '@storyblok/astro@5.1.0-alpha.4(patch_hash=smke3nl3tcb64xquz2tdxeghxu)(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))':
     dependencies:
       '@storyblok/js': 3.1.4
       astro: 5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2)
