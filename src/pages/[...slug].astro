@@ -1,28 +1,29 @@
 ---
-import { useStoryblok } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-
-import { STORYBLOK_API_TOKEN } from "astro:env/server";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { type ISbStoryData } from "@storyblok/astro";
 
-const { slug = "home" } = Astro.params;
+export const prerender = true;
+interface Props {
+  story: ISbStoryData;
+}
 
-const story = await useStoryblok(
-  // The slug to fetch
-  `cdn/stories/${slug}`,
-  // `cdn/stories/home`,
-  // The API options
-  {
-    version: "published",
-  },
-  // The Bridge options (optional, if an empty object, null, or false are set, the API options will be considered automatically as far as applicable)
-  {},
-  // The Astro object (essential for the live preview functionality)
-  Astro
-);
+export async function getStaticPaths() {
+  const stories = await getCollection("storyblok");
+
+  return stories.map(({ data }: { data: ISbStoryData }) => {
+    return {
+      params: { slug: data.full_slug },
+      props: { story: data },
+    };
+  });
+}
+
+const { story } = Astro.props;
 ---
 
 <BaseLayout>
-  <h1>{STORYBLOK_API_TOKEN}</h1>
-  <StoryblokComponent blok={story.content} />
+  <h1>{story.name}</h1>
+  <!-- <StoryblokComponent blok={story.content} /> -->
 </BaseLayout>
