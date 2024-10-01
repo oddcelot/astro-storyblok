@@ -1,18 +1,26 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig, envField } from "astro/config"
 import storyblok from '@storyblok/astro'
-import { loadEnv } from 'vite'
+// import { loadEnv } from 'vite'
 import tailwind from '@astrojs/tailwind'
 import node from '@astrojs/node';
 import mkcert from 'vite-plugin-mkcert'
 
-const env = loadEnv('', process.cwd(), 'STORYBLOK')
+// const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
-// https://astro.build/config
+
+
 export default defineConfig({
+  env: {
+    schema: {
+      // CLIENT_API_URL: envField.string({ context: "client", access: "public" }),
+      // SERVER_API_URL: envField.string({ context: "server", access: "public" }),
+      STORYBLOK_API_TOKEN: envField.string({ context: "server", access: "secret" }),
+    }
+  },
   integrations: [
     storyblok({
       //accessToken: env.STORYBLOK_TOKEN,
-      accessToken: 'xxx',
+      accessToken: process.env.STORYBLOK_API_TOKEN,
       apiOptions: {
         region: 'eu',
       },

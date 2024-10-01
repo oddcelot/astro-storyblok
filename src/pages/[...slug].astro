@@ -2,6 +2,9 @@
 import { useStoryblok } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
+import { STORYBLOK_API_TOKEN } from "astro:env/server";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
 const { slug = "home" } = Astro.params;
 
 const story = await useStoryblok(
@@ -19,4 +22,7 @@ const story = await useStoryblok(
 );
 ---
 
-<StoryblokComponent blok={story.content} />
+<BaseLayout>
+  <h1>{STORYBLOK_API_TOKEN}</h1>
+  <StoryblokComponent blok={story.content} />
+</BaseLayout>
