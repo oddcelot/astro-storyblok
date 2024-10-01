@@ -22,5 +22,10 @@
   },
   "dependencies": {
     "@astrojs/node": "9.0.0-beta.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@storyblok/astro": "patches/@storyblok__astro.patch"
+    }
   }
 }
