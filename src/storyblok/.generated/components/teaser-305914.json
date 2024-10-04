@@ -1,0 +1,26 @@
+{
+  "name": "teaser",
+  "display_name": null,
+  "created_at": "2024-09-23T18:44:54.906Z",
+  "updated_at": "2024-09-23T18:44:54.906Z",
+  "id": 6327224,
+  "schema": {
+    "headline": {
+      "type": "text"
+    }
+  },
+  "image": null,
+  "preview_field": null,
+  "is_root": false,
+  "preview_tmpl": null,
+  "is_nestable": true,
+  "all_presets": [],
+  "preset_id": null,
+  "real_name": "teaser",
+  "component_group_uuid": null,
+  "color": null,
+  "icon": null,
+  "internal_tags_list": [],
+  "internal_tag_ids": [],
+  "content_type_asset_preview": null
+}

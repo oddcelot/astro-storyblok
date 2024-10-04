@@ -7,7 +7,13 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "storyblok": "storyblok",
+    "sb:pull:langs": "storyblok pull-languages --space 305914",
+    "sb:pull:components": "storyblok pull-components --space 305914 --separate-files --path src/storyblok/.generated/components/",
+    "sb:push:components": "storyblok push-components src/storyblok/.generated/components/custom-code-blok.json --space 305914",
+    "sb:generate:types": "storyblok generate-typescript-typedefs --sourceFilePaths src/storyblok/.generated/components/page-305914.json --destinationFilePath src/storyblok/.generated/components/types/page.ts",
+    "env_test": "node --env-file=.env --eval 'console.log(process.env.STORYBLOK_SPACE_ID)'"
   },
   "devDependencies": {
     "@astrojs/tailwind": "5.1.1",
@@ -15,6 +21,7 @@
     "@storyblok/js": "3.1.6",
     "astro": "5.0.0-beta.3",
     "mkcert": "3.2.0",
+    "storyblok": "3.34.0",
     "tailwindcss": "3.4.13",
     "vite": "5.4.8",
     "vite-plugin-mkcert": "1.17.6"

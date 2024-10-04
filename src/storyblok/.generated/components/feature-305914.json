@@ -1,0 +1,26 @@
+{
+  "name": "feature",
+  "display_name": null,
+  "created_at": "2024-09-23T18:44:54.937Z",
+  "updated_at": "2024-09-23T18:44:54.937Z",
+  "id": 6327226,
+  "schema": {
+    "name": {
+      "type": "text"
+    }
+  },
+  "image": null,
+  "preview_field": null,
+  "is_root": false,
+  "preview_tmpl": null,
+  "is_nestable": true,
+  "all_presets": [],
+  "preset_id": null,
+  "real_name": "feature",
+  "component_group_uuid": null,
+  "color": null,
+  "icon": null,
+  "internal_tags_list": [],
+  "internal_tag_ids": [],
+  "content_type_asset_preview": null
+}

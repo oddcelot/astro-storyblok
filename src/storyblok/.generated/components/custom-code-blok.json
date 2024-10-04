@@ -1,0 +1,30 @@
+{
+  "name": "custom-code-blok",
+  "display_name": "Readabable name for the block",
+  "id": 6378034,
+  "schema": {
+    "fancyTitle": {
+      "type": "text",
+      "pos": 0
+    },
+    "extrafancy": {
+      "type": "boolean",
+      "pos": 0
+    }
+  },
+  "image": null,
+  "preview_field": null,
+  "is_root": false,
+  "preview_tmpl": null,
+  "is_nestable": true,
+  "all_presets": [],
+  "preset_id": null,
+  "real_name": "custom-code-blok",
+  "component_group_uuid": "all",
+  "color": null,
+  "icon": null,
+  "internal_tags_list": [],
+  "internal_tag_ids": [],
+  "content_type_asset_preview": null,
+  "component_group_name": ""
+}
