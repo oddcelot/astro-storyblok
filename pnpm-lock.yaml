@@ -19,11 +19,8 @@ importers:
         specifier: 5.1.0-alpha.4
         version: 5.1.0-alpha.4(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))
       '@storyblok/js':
-        specifier: 3.1.4
-        version: 3.1.4
-      '@vitejs/plugin-basic-ssl':
-        specifier: 1.1.0
-        version: 1.1.0(vite@5.4.7)
+        specifier: 3.1.6
+        version: 3.1.6
       astro:
         specifier: 5.0.0-beta.3
         version: 5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2)
@@ -34,11 +31,11 @@ importers:
         specifier: 3.4.13
         version: 3.4.13
       vite:
-        specifier: 5.4.7
-        version: 5.4.7
+        specifier: 5.4.8
+        version: 5.4.8
       vite-plugin-mkcert:
         specifier: 1.17.6
-        version: 1.17.6(vite@5.4.7)
+        version: 1.17.6(vite@5.4.8)
 
 packages:
 
@@ -539,8 +536,8 @@ packages:
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
 
-  '@storyblok/js@3.1.4':
-    resolution: {integrity: sha512-Uh+ESR4xF+8C7veSiVA3IeYNqPdwRDOxJdqyGHAVBZ7OuQ2SzZkW3eAKax2TiX8W4DPSljIKvI6MKpvEG3KwWA==}
+  '@storyblok/js@3.1.6':
+    resolution: {integrity: sha512-CF0JMQyR91co95E9/nTwdDEOVrMBT15BV7azXPYYQVNmdUpdnpNoHThzPZpcED4E23lJDLVRnwHTEZ54ytkaGw==}
 
   '@storyblok/richtext@2.1.0':
     resolution: {integrity: sha512-hQoZ+mIMuNuFOgjikY8njA29LZ3PMcqINn2Dc4CH9BB+yyYFosiQuIi51CvYoTT/IuslG58FS0/js91/635UUQ==}
@@ -571,12 +568,6 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
-
-  '@vitejs/plugin-basic-ssl@1.1.0':
-    resolution: {integrity: sha512-wO4Dk/rm8u7RNhOf95ZzcEmC9rYOncYgvq4z3duaJrCgjN8BxAnDVyndanfcJZ0O6XZzHz6Q0hTimxTg8Y9g/A==}
-    engines: {node: '>=14.6.0'}
-    peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   acorn@8.12.1:
     resolution: {integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==}
@@ -1771,37 +1762,6 @@ packages:
     peerDependencies:
       vite: '>=3'
 
-  vite@5.4.7:
-    resolution: {integrity: sha512-5l2zxqMEPVENgvzTuBpHer2awaetimj2BGkhBPdnwKbPNOlHsODU+oiazEZzLK7KhAnOrO+XGYJYn4ZlUhDtDQ==}
-    engines: {node: ^18.0.0 || >=20.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': ^18.0.0 || >=20.0.0
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      sass-embedded:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-
   vite@5.4.8:
     resolution: {integrity: sha512-FqrItQ4DT1NC4zCUqMB4c4AZORMKIa0m8/URVCZ77OZ/QSNeJ54bU1vrFADbDsuwfIPcgknRkmqakQcgnL4GiQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -2337,12 +2297,12 @@ snapshots:
 
   '@storyblok/astro@5.1.0-alpha.4(astro@5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2))':
     dependencies:
-      '@storyblok/js': 3.1.4
+      '@storyblok/js': 3.1.6
       astro: 5.0.0-beta.3(rollup@4.23.0)(typescript@5.6.2)
       camelcase: 8.0.0
       lodash.mergewith: 4.6.2
 
-  '@storyblok/js@3.1.4':
+  '@storyblok/js@3.1.6':
     dependencies:
       '@storyblok/richtext': 2.1.0
       storyblok-js-client: 6.10.0
@@ -2376,10 +2336,6 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@ungap/structured-clone@1.2.0': {}
-
-  '@vitejs/plugin-basic-ssl@1.1.0(vite@5.4.7)':
-    dependencies:
-      vite: 5.4.7
 
   acorn@8.12.1: {}
 
@@ -3915,23 +3871,15 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.2
 
-  vite-plugin-mkcert@1.17.6(vite@5.4.7):
+  vite-plugin-mkcert@1.17.6(vite@5.4.8):
     dependencies:
       '@octokit/rest': 20.1.1
       axios: 1.7.7(debug@4.3.7)
       debug: 4.3.7
       picocolors: 1.1.0
-      vite: 5.4.7
+      vite: 5.4.8
     transitivePeerDependencies:
       - supports-color
-
-  vite@5.4.7:
-    dependencies:
-      esbuild: 0.21.5
-      postcss: 8.4.47
-      rollup: 4.23.0
-    optionalDependencies:
-      fsevents: 2.3.3
 
   vite@5.4.8:
     dependencies:

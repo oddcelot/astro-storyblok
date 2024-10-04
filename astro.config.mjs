@@ -4,26 +4,27 @@ import tailwind from '@astrojs/tailwind'
 import node from '@astrojs/node';
 import mkcert from 'vite-plugin-mkcert'
 
+const { STORYBLOK_API_TOKEN, STORYBLOK_PREVIEW } = process.env
 
 export default defineConfig({
   env: {
     schema: {
       STORYBLOK_API_TOKEN: envField.string({ context: "server", access: "secret" }),
+      STORYBLOK_PREVIEW: envField.boolean({ context: "server", access: "secret", default: false }),
     }
   },
 
   integrations: [
     storyblok({
-      accessToken: process.env.STORYBLOK_API_TOKEN,
-      contentLayer: true,
-      // enableFallbackComponent: true,
+      accessToken: STORYBLOK_API_TOKEN,
       apiOptions: {
         region: 'eu',
       },
-      // livePreview: true,
-      // bridge: {
-      //   customParent: 'https://app.storyblok.com',
-      // },
+      livePreview: true,
+      bridge: STORYBLOK_PREVIEW,
+      // contentLayer: STORYBLOK_PREVIEW,
+      enableFallbackComponent: true,
+      customFallbackComponent: 'storyblok/Fallback',
       components: {
         page: 'storyblok/Page',
         feature: 'storyblok/Feature',
