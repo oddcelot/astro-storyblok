@@ -22,7 +22,7 @@ export default defineConfig({
       },
       livePreview: true,
       bridge: STORYBLOK_PREVIEW,
-      // contentLayer: STORYBLOK_PREVIEW,
+      // contentLayer: true,
       enableFallbackComponent: true,
       customFallbackComponent: 'storyblok/Fallback',
       components: {
