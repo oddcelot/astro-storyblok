@@ -1,7 +1,22 @@
 ---
-const { blok } = Astro.props;
+import { Code } from "astro:components";
+
+export type UnknownBlockProps = {
+  blok: { _uid: string; component: string; _editable: string } & Record<
+    string,
+    unknown
+  >;
+};
+
+const { blok } = Astro.props as UnknownBlockProps;
 ---
 
-<div class="w-full p-12 bg-[#f7f6fd] rounded-[5px] text-center">
-  <span><strong>Error:</strong>this should be <code>{blok.name}</code></span>
+<div class="w-full p-12 bg-[#f7f6fd] rounded-[5px]">
+  <details>
+    <summary>
+      No component found for <code>{blok.component}</code>
+    </summary>
+
+    <Code code={JSON.stringify(blok, undefined, 2)} lang="json" />
+  </details>
 </div>
