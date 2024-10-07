@@ -9,7 +9,7 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 export const prerender = !import.meta.env.DEV;
-const { slug } = Astro.params;
+const { slug = "home" } = Astro.params;
 
 const storyblokApi = useStoryblokApi();
 
@@ -28,12 +28,12 @@ export async function getStaticPaths() {
   });
 }
 
-const { story } = Astro.props;
+const { staticStory } = Astro.props;
 
 const liveStory = await getLiveStory(Astro);
-const storyP = liveStory || data.story;
+const story = liveStory || data.story || staticStory;
 ---
 
 <BaseLayout>
-  <StoryblokComponent blok={storyP?.content} />
+  <StoryblokComponent blok={story?.content} />
 </BaseLayout>
