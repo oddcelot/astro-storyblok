@@ -1,0 +1,105 @@
+diff --git a/dist/storyblok-astro.mjs b/dist/storyblok-astro.mjs
+index d3f4f20afe5cd37b3df9921f048f24304d640de1..cc290d68d0962a3f743b0adabb1c5860a63f3686 100644
+--- a/dist/storyblok-astro.mjs
++++ b/dist/storyblok-astro.mjs
+@@ -15,7 +15,7 @@ function B(o, e, t) {
+             use: ${e ? "[]" : "[apiPlugin]"},
+             apiOptions: ${JSON.stringify(t)},
+           });
+-          export const storyblokApiInstance = storyblokApi;  
++          export const storyblokApiInstance = storyblokApi;
+         `;
+     }
+   };
+@@ -133,19 +133,19 @@ function G(o, e, t) {
+     throw new TypeError("Expected `interval` to be a finite number");
+   const s = [];
+   let r = [], n = 0;
+-  const i = function() {
++  const i = function () {
+     n++;
+-    const a = setTimeout(function() {
+-      n--, s.length > 0 && i(), r = r.filter(function(h) {
++    const a = setTimeout(function () {
++      n--, s.length > 0 && i(), r = r.filter(function (h) {
+         return h !== a;
+       });
+     }, t);
+     r.indexOf(a) < 0 && r.push(a);
+     const c = s.shift();
+     c.resolve(o.apply(c.self, c.args));
+-  }, l = function(...a) {
++  }, l = function (...a) {
+     const c = this;
+-    return new Promise(function(h, u) {
++    return new Promise(function (h, u) {
+       s.push({
+         resolve: h,
+         reject: u,
+@@ -154,9 +154,9 @@ function G(o, e, t) {
+       }), n < e && i();
+     });
+   };
+-  return l.abort = function() {
+-    r.forEach(clearTimeout), r = [], s.forEach(function(a) {
+-      a.reject(function() {
++  return l.abort = function () {
++    r.forEach(clearTimeout), r = [], s.forEach(function (a) {
++      a.reject(function () {
+         Error.call(this, "Throttled function aborted"), this.name = "AbortError";
+       });
+     }), s.length = 0;
+@@ -171,7 +171,7 @@ class b {
+     })), d(this, "delay", (e) => new Promise((t) => setTimeout(t, e))), d(this, "arrayFrom", (e = 0, t) => [...Array(e)].map(t)), d(this, "range", (e = 0, t = e) => {
+       const s = Math.abs(t - e) || 0, r = e < t ? 1 : -1;
+       return this.arrayFrom(s, (n, i) => i * r + e);
+-    }), d(this, "asyncMap", async (e, t) => Promise.all(e.map(t))), d(this, "flatMap", (e = [], t) => e.map(t).reduce((s, r) => [...s, ...r], [])), d(this, "escapeHTML", function(e) {
++    }), d(this, "asyncMap", async (e, t) => Promise.all(e.map(t))), d(this, "flatMap", (e = [], t) => e.map(t).reduce((s, r) => [...s, ...r], [])), d(this, "escapeHTML", function (e) {
+       const t = {
+         "&": "&amp;",
+         "<": "&lt;",
+@@ -225,7 +225,7 @@ class b {
+     }
+   }
+ }
+-const Y = function(o, e) {
++const Y = function (o, e) {
+   const t = {};
+   for (const s in o) {
+     const r = o[s];
+@@ -380,7 +380,7 @@ const Y = function(o, e) {
+     highlight: we,
+     textStyle: Se
+   }
+-}, Ce = function(o) {
++}, Ce = function (o) {
+   const e = {
+     "&": "&amp;",
+     "<": "&lt;",
+@@ -419,7 +419,7 @@ class $e {
+ 				attrs?: any
+ 				text?: string
+ 				type: string
+-				
++
+ 				Example:
+ 				{
+ 					content: [
+@@ -1176,7 +1176,7 @@ function qe({
+                 storyblokInstance.on(["published", "change"], (event) => {
+                   if (!event.slugChanged) {
+                     location.reload(true);
+-                  } 
++                  }
+                 });
+               });
+             `
+@@ -1197,7 +1197,7 @@ function qe({
+         })), n && c(
+           "page",
+           `
+-              import { loadStoryblokBridge, syncContentUpdate } from "@storyblok/astro";
++              import { syncContentUpdate } from "@storyblok/astro";
+               loadStoryblokBridge().then(() => {
+                 const { StoryblokBridge } = window;
+                 const storyblokInstance = new StoryblokBridge()
