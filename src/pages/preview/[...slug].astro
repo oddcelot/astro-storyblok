@@ -1,0 +1,35 @@
+---
+import {  getLiveStory, useStoryblokApi} from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getLangFromSlug } from '../../utils/lang'
+
+const storyblokApi = useStoryblokApi()
+const {slug} = Astro.params
+const language = getLangFromSlug(slug)
+
+
+function getSlugForLang(slug: string, langCode: string) {
+  if (langCode === "en") {
+    return slug;
+  }
+  return slug.split(`${langCode}/`)[1];
+}
+
+const slugWithoutLang = getSlugForLang(slug, language.code)
+
+const { data } = await storyblokApi.get(
+  `cdn/stories/${slugWithoutLang === undefined ? 'home' : slugWithoutLang}`,
+  {
+    version: "draft",
+    language: language.code,
+  }
+);
+
+const liveStory = await getLiveStory(Astro);
+const story = liveStory || data.story
+---
+
+<BaseLayout language={language}>
+  <StoryblokComponent language={language} blok={story?.content}} />
+</BaseLayout>

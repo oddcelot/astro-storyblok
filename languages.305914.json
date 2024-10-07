@@ -1,3 +1,9 @@
 {
-  "languages": []
+  "default_lang_name": "English",
+  "languages": [
+    {
+      "code": "de",
+      "name": "German"
+    }
+  ]
 }

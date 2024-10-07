@@ -1,5 +1,6 @@
-import { storyblokLoader } from "@storyblok/astro";
 import { defineCollection } from "astro:content";
+import { storyblokLoader } from "@storyblok/astro";
+
 import { STORYBLOK_API_TOKEN } from "astro:env/server";
 
 const storyblokCollection = defineCollection({
@@ -8,7 +9,7 @@ const storyblokCollection = defineCollection({
     apiOptions: {
       region: "eu",
     },
-    version: "draft",
+    version: "published",
   }),
 });
 

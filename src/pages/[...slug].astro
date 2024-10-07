@@ -1,39 +1,57 @@
 ---
-import { getCollection } from "astro:content";
-import {
-  getLiveStory,
-  useStoryblokApi,
-  type ISbStoryData,
-} from "@storyblok/astro";
+import type { GetStaticPaths } from "astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import {   useStoryblokApi} from '@storyblok/astro'
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-export const prerender = !import.meta.env.DEV;
-const { slug = "home" } = Astro.params;
-
-const storyblokApi = useStoryblokApi();
-
-const { data } = await storyblokApi.getStory(slug, {
-  version: "draft",
-});
-
-export async function getStaticPaths() {
-  const stories = await getCollection("storyblok");
-
-  return stories.map(({ data }: { data: ISbStoryData }) => {
-    return {
-      params: { slug: data.full_slug },
-      props: { story: data },
-    };
-  });
+import { type ISbStoryData } from "@storyblok/astro";
+import {  allLanguages } from "../utils/lang";
+interface Props {
+  story: ISbStoryData;
 }
 
-const { story: staticStory } = Astro.props;
+export const prerender = true
 
-const liveStory = await getLiveStory(Astro);
-const story = liveStory || data.story || staticStory;
+export async function getStaticPaths() {
+  const sbApi = useStoryblokApi();
+
+
+  const { data } = await sbApi.get("cdn/links", {
+    version: "published",
+  })
+
+  const allSlugs = Object.values(data.links).map((link) => {
+    return link.slug;
+  });
+
+  const slugMap = allLanguages.map(lang => lang.code).flatMap((lang) => {
+    return allSlugs.map((slug) => {
+      return {
+        slug, lang
+      };
+    });
+  });
+
+  const staticStories = await Promise.all(slugMap.map(async ({slug, lang}) => {
+     const { data } = await sbApi.get(
+        `cdn/stories/${slug === undefined ? 'home' : slug}`,
+        {
+          version: "published",
+          language: lang,
+        }
+      );
+    return {
+      params: {
+        slug: data.story.full_slug,
+        lang
+      },
+      props: { story: data.story }
+    };
+  }));
+
+  return staticStories
+}
 ---
 
 <BaseLayout>
-  <StoryblokComponent blok={story?.content} />
+  <StoryblokComponent blok={Astro.props.story.content} />
 </BaseLayout>
