@@ -5,6 +5,7 @@ import node from '@astrojs/node';
 import mkcertPlugin from 'vite-plugin-mkcert';
 import { debarrelPlugin } from './vite-plugin-debarrel';
 
+console.log(import.meta.env.MODE !== 'production');
 
 const { STORYBLOK_API_TOKEN, STORYBLOK_PREVIEW } = process.env
 
@@ -12,7 +13,7 @@ export default defineConfig({
   env: {
     schema: {
       STORYBLOK_API_TOKEN: envField.string({ context: "server", access: "secret" }),
-      STORYBLOK_PREVIEW: envField.boolean({ context: "server", access: "secret", default: false }),
+      STORYBLOK_PREVIEW: envField.boolean({ context: "server", access: "public", default: false }),
     }
   },
 
@@ -22,9 +23,9 @@ export default defineConfig({
       apiOptions: {
         region: 'eu',
       },
-      livePreview: true,
+      livePreview: import.meta.env.MODE !== 'production',
       bridge: STORYBLOK_PREVIEW,
-      // contentLayer: true,
+      contentLayer: import.meta.env.MODE === 'production',
       enableFallbackComponent: true,
       customFallbackComponent: 'storyblok/Fallback',
       components: {

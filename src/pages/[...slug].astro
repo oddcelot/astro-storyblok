@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { staticStory } = Astro.props;
+const { story: staticStory } = Astro.props;
 
 const liveStory = await getLiveStory(Astro);
 const story = liveStory || data.story || staticStory;
