@@ -2,7 +2,9 @@ import { defineConfig, envField } from "astro/config"
 import storyblok from '@storyblok/astro'
 import tailwind from '@astrojs/tailwind'
 import node from '@astrojs/node';
-import mkcert from 'vite-plugin-mkcert'
+import mkcertPlugin from 'vite-plugin-mkcert';
+import { debarrelPlugin } from './vite-plugin-debarrel';
+
 
 const { STORYBLOK_API_TOKEN, STORYBLOK_PREVIEW } = process.env
 
@@ -41,6 +43,6 @@ export default defineConfig({
   }),
 
   vite: {
-    plugins: [mkcert()],
+    plugins: [mkcertPlugin(), debarrelPlugin()],
   },
 })
